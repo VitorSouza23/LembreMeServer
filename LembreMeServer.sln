@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Services", "1 - Services", "{CE56B5B0-2686-44C6-883D-957C1B5FFDEB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Application", "{EC9507CD-F660-4FDA-8E2F-DA125F20D0FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", "{A6D2865D-F77D-4A75-BD67-2A8115FF318F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{F8A2399B-963A-47E8-8207-E6F89BF75507}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LembreMeServer.Services", "LembreMeServer.Services\LembreMeServer.Services.csproj", "{4E6FFD9B-311D-43F5-A448-073C60873F3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LembreMeServer.API", "LembreMeServer.API\LembreMeServer.API.csproj", "{4E6B8126-7CAE-48C1-939D-2667BDF6C840}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LembreMeServer.Domain", "LembreMeServer.Domain\LembreMeServer.Domain.csproj", "{054F0A18-8A93-460F-BC50-FD6F9DFE44D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LembreMeServer.Infra", "LembreMeServer.Infra\LembreMeServer.Infra.csproj", "{4D488D05-4F16-412D-8F9B-0991ED797514}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E6FFD9B-311D-43F5-A448-073C60873F3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E6FFD9B-311D-43F5-A448-073C60873F3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E6FFD9B-311D-43F5-A448-073C60873F3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E6FFD9B-311D-43F5-A448-073C60873F3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E6B8126-7CAE-48C1-939D-2667BDF6C840}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E6B8126-7CAE-48C1-939D-2667BDF6C840}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E6B8126-7CAE-48C1-939D-2667BDF6C840}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E6B8126-7CAE-48C1-939D-2667BDF6C840}.Release|Any CPU.Build.0 = Release|Any CPU
+		{054F0A18-8A93-460F-BC50-FD6F9DFE44D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{054F0A18-8A93-460F-BC50-FD6F9DFE44D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{054F0A18-8A93-460F-BC50-FD6F9DFE44D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{054F0A18-8A93-460F-BC50-FD6F9DFE44D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D488D05-4F16-412D-8F9B-0991ED797514}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D488D05-4F16-412D-8F9B-0991ED797514}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D488D05-4F16-412D-8F9B-0991ED797514}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D488D05-4F16-412D-8F9B-0991ED797514}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4E6FFD9B-311D-43F5-A448-073C60873F3B} = {CE56B5B0-2686-44C6-883D-957C1B5FFDEB}
+		{4E6B8126-7CAE-48C1-939D-2667BDF6C840} = {EC9507CD-F660-4FDA-8E2F-DA125F20D0FA}
+		{054F0A18-8A93-460F-BC50-FD6F9DFE44D8} = {A6D2865D-F77D-4A75-BD67-2A8115FF318F}
+		{4D488D05-4F16-412D-8F9B-0991ED797514} = {F8A2399B-963A-47E8-8207-E6F89BF75507}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {65880AF3-9D1F-4D72-80FF-D119AE92CA15}
+	EndGlobalSection
+EndGlobal
