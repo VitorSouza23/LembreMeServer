@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace LembreMeServer.Infra.Context
 {
-    public class EFContext : DbContext
+    public class EFContext : DbContext, IAppContext
     {
         public DbSet<Task> Tasks { get; set; }
         public DbSet<Location> Locations { get; set; }
