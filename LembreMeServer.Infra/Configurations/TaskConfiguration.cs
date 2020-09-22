@@ -13,6 +13,25 @@ namespace LembreMeServer.Infra.Configurations
                 .IsRequired()
                 .HasMaxLength(200)
                 .HasColumnType("varchar");
+
+            builder.OwnsOne(t => t.Location, location =>
+            {
+                location.Property(l => l.City)
+                    .HasMaxLength(200)
+                    .HasColumnType("varchar");
+
+                location.Property(l => l.FederativeUnit)
+                    .HasMaxLength(200)
+                    .HasColumnType("varchar");
+
+                location.Property(l => l.Neighborhood)
+                    .HasMaxLength(200)
+                    .HasColumnType("varchar");
+
+                location.Property(l => l.Street)
+                    .HasMaxLength(200)
+                    .HasColumnType("varchar");
+            });
         }
     }
 }

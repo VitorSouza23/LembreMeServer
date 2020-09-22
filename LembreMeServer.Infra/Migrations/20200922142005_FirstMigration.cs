@@ -25,18 +25,16 @@ namespace LembreMeServer.Infra.Migrations
                 name: "Locations",
                 columns: table => new
                 {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Street = table.Column<string>(type: "varchar", maxLength: 100, nullable: true),
-                    Number = table.Column<int>(nullable: false, defaultValue: 0),
-                    Neighborhood = table.Column<string>(type: "varchar", maxLength: 100, nullable: true),
-                    City = table.Column<string>(type: "varchar", maxLength: 100, nullable: true),
-                    FederativeUnit = table.Column<string>(type: "varchar", maxLength: 100, nullable: true),
-                    TaskId = table.Column<long>(nullable: false)
+                    TaskId = table.Column<long>(nullable: false),
+                    Street = table.Column<string>(type: "varchar", maxLength: 200, nullable: true),
+                    Number = table.Column<int>(nullable: true),
+                    Neighborhood = table.Column<string>(type: "varchar", maxLength: 200, nullable: true),
+                    City = table.Column<string>(type: "varchar", maxLength: 200, nullable: true),
+                    FederativeUnit = table.Column<string>(type: "varchar", maxLength: 200, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Locations", x => x.Id);
+                    table.PrimaryKey("PK_Locations", x => x.TaskId);
                     table.ForeignKey(
                         name: "FK_Locations_Tasks_TaskId",
                         column: x => x.TaskId,
@@ -44,12 +42,6 @@ namespace LembreMeServer.Infra.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Locations_TaskId",
-                table: "Locations",
-                column: "TaskId",
-                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

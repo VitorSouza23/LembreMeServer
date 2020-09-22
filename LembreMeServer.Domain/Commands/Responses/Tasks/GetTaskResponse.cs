@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using LembreMeServer.Domain.Entities;
+using System;
 
-namespace LembreMeServer.Domain.Entities
+namespace LembreMeServer.Domain.Commands.Responses.Tasks
 {
-    public class Task
+    public class GetTaskResponse
     {
         public long Id { get; set; }
         public string Description { get; set; }

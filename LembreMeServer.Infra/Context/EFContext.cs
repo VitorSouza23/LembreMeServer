@@ -1,12 +1,14 @@
 ﻿using LembreMeServer.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using TaskDomain = LembreMeServer.Domain.Entities.Task;
+
 
 namespace LembreMeServer.Infra.Context
 {
     public class EFContext : DbContext, IAppContext
     {
-        public DbSet<Task> Tasks { get; set; }
+        public DbSet<TaskDomain> Tasks { get; set; }
         public DbSet<Location> Locations { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -3,6 +3,7 @@ using LembreMeServer.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace LembreMeServer.Infra.Repository
 {
@@ -16,33 +17,33 @@ namespace LembreMeServer.Infra.Repository
             _appContext = appContext;
         }
 
-        public void Add(TEntity entity)
+        public async Task AddAsync(TEntity entity)
         {
             _appContext.Set<TEntity>().Add(entity);
-            _appContext.SaveChanges();
+            await _appContext.SaveChangesAsync();
         }
 
-        public TEntity Get(long id)
+        public async Task<TEntity> GetAsync(long id)
         {
-            return _appContext.Set<TEntity>().Find(id);
+            return await _appContext.Set<TEntity>().FindAsync(id);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            return _appContext.Set<TEntity>().ToList();
+            return await _appContext.Set<TEntity>().ToListAsync();
         }
 
-        public void Update(long id, TEntity entity)
+        public async Task UpdateAsync(long id, TEntity entity)
         {
             _appContext.Entry(entity).State = EntityState.Modified;
-            _appContext.SaveChanges();
+            await _appContext.SaveChangesAsync();
         }
 
-        public void Remove(long id)
+        public async Task RemoveAsync(long id)
         {
-            TEntity toRemove = _appContext.Set<TEntity>().Find(id);
+            TEntity toRemove =  await _appContext.Set<TEntity>().FindAsync(id);
             _appContext.Set<TEntity>().Remove(toRemove);
-            _appContext.SaveChanges();
+            await _appContext.SaveChangesAsync();
         }
     }
 }
