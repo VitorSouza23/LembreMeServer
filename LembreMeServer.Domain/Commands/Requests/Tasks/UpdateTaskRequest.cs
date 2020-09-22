@@ -2,8 +2,6 @@
 using LembreMeServer.Domain.Entities;
 using MediatR;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LembreMeServer.Domain.Commands.Requests.Tasks
 {
