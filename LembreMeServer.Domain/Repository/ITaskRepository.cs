@@ -7,5 +7,6 @@ namespace LembreMeServer.Domain.Repository
     public interface ITaskRepository : IRepository<TaskDomain>
     {
         Task<IEnumerable<TaskDomain>> GetAllCompletedTasksAsync();
+        Task<IEnumerable<TaskDomain>> GetAllNotCompletedTasksAsync();
     }
 }

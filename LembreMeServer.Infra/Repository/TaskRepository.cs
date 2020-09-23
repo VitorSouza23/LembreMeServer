@@ -19,5 +19,10 @@ namespace LembreMeServer.Infra.Repository
         {
             return await _appContext.Tasks.Where(t => t.Completed).ToListAsync();
         }
+
+        public async Task<IEnumerable<TaskDomain>> GetAllNotCompletedTasksAsync()
+        {
+            return await _appContext.Tasks.Where(t => t.Completed == false).ToListAsync();
+        }
     }
 }

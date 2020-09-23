@@ -79,6 +79,10 @@ namespace LembreMeServer.Domain.Handlers
             {
                 tasks = await _taskRepository.GetAllCompletedTasksAsync();
             }
+            else if (request.OnlyNotCompleted)
+            {
+                tasks = await _taskRepository.GetAllNotCompletedTasksAsync();
+            }
             else
             {
                 tasks = await _taskRepository.GetAllAsync();

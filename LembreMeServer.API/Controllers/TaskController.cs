@@ -26,7 +26,11 @@ namespace LembreMeServer.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<TaskModel>> Get([FromQuery] AllTasksParameters allTasksParameters)
         {
-            IEnumerable<GetTaskResponse> getAllTasksResponse = await _mediator.Send(new GetAllTasksRequest() { OnlyCompleted = allTasksParameters.OnlyCompleted });
+            IEnumerable<GetTaskResponse> getAllTasksResponse = await _mediator.Send(new GetAllTasksRequest() 
+            { 
+                OnlyCompleted = allTasksParameters.OnlyCompleted,
+                OnlyNotCompleted = allTasksParameters.OnlyNotCompleted
+            });
             return _mapper.Map<IEnumerable<TaskModel>>(getAllTasksResponse);
         }
 
@@ -63,7 +67,7 @@ namespace LembreMeServer.API.Controllers
         }
 
         [HttpPatch("{id}")]
-        public async Task<bool> PatchCompleted(long id, [FromBody] bool completed)
+        public async Task<bool> PatchCompleted(long id, [FromQuery] bool completed)
         {
             PatchCompletedTaskRequest patchCompletedTaskRequest = new PatchCompletedTaskRequest() { Id = id, Completed = completed };
             bool success = await _mediator.Send(patchCompletedTaskRequest);

@@ -30,8 +30,8 @@ namespace LembreMeServer.API
             services.AddAutoMapper(Assembly.GetExecutingAssembly(), domainAssembly);
             services.AddMediatR(Assembly.GetExecutingAssembly(), domainAssembly);
 
-            services.AddSingleton<IAppContext, EFContext>();
-            services.AddSingleton<ITaskRepository, TaskRepository>();
+            services.AddScoped<IAppContext, EFContext>();
+            services.AddScoped<ITaskRepository, TaskRepository>();
 
         }
 
@@ -40,6 +40,11 @@ namespace LembreMeServer.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseCors(builder => 
+                    builder.WithOrigins("http://localhost:5000")
+                        .AllowAnyHeader()
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod());
             }
 
             app.UseHttpsRedirection();
