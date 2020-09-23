@@ -74,7 +74,16 @@ namespace LembreMeServer.Domain.Handlers
 
         public async Task<IEnumerable<GetTaskResponse>> Handle(GetAllTasksRequest request, CancellationToken cancellationToken)
         {
-            IEnumerable<TaskDomain> tasks = await _taskRepository.GetAllAsync();
+            IEnumerable<TaskDomain> tasks;
+            if (request.OnlyCompleted)
+            {
+                tasks = await _taskRepository.GetAllCompletedTasksAsync();
+            }
+            else
+            {
+                tasks = await _taskRepository.GetAllAsync();
+            }
+            
             return _mapper.Map<IEnumerable<GetTaskResponse>>(tasks);
         }
 

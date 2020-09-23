@@ -24,9 +24,9 @@ namespace LembreMeServer.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<TaskModel>> Get()
+        public async Task<IEnumerable<TaskModel>> Get([FromQuery] AllTasksParameters allTasksParameters)
         {
-            IEnumerable<GetTaskResponse> getAllTasksResponse = await _mediator.Send(new GetAllTasksRequest());
+            IEnumerable<GetTaskResponse> getAllTasksResponse = await _mediator.Send(new GetAllTasksRequest() { OnlyCompleted = allTasksParameters.OnlyCompleted });
             return _mapper.Map<IEnumerable<TaskModel>>(getAllTasksResponse);
         }
 
