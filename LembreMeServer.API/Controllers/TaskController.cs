@@ -61,5 +61,13 @@ namespace LembreMeServer.API.Controllers
             bool success = await _mediator.Send(deleteTaskRequest);
             return success;
         }
+
+        [HttpPatch("{id}")]
+        public async Task<bool> PatchCompleted(long id, [FromBody] bool completed)
+        {
+            PatchCompletedTaskRequest patchCompletedTaskRequest = new PatchCompletedTaskRequest() { Id = id, Completed = completed };
+            bool success = await _mediator.Send(patchCompletedTaskRequest);
+            return success;
+        }
     }
 }

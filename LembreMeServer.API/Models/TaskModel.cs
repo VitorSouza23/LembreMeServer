@@ -10,6 +10,7 @@ namespace LembreMeServer.API.Models
         [Required]
         [MaxLength(200)]
         public string Description { get; set; }
+        public bool Completed { get; set; }
         public DateTime? Deadline { get; set; }
         public virtual LocationModel? Location { get; set; }
     }

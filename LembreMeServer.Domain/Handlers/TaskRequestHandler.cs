@@ -14,7 +14,8 @@ namespace LembreMeServer.Domain.Handlers
         IRequestHandler<UpdateTaskRequest, bool>,
         IRequestHandler<DeleteTaskRequest, bool>,
         IRequestHandler<GetTaskRequest, GetTaskResponse>,
-        IRequestHandler<GetAllTasksRequest, IEnumerable<GetTaskResponse>>
+        IRequestHandler<GetAllTasksRequest, IEnumerable<GetTaskResponse>>,
+        IRequestHandler<PatchCompletedTaskRequest, bool>
     {
         private readonly ITaskRepository _taskRepository;
         private readonly IMapper _mapper;
@@ -41,9 +42,12 @@ namespace LembreMeServer.Domain.Handlers
             if (request.IsValid())
             {
                 TaskDomain currentTask = await _taskRepository.GetAsync(request.Id);
-                _mapper.Map(request, currentTask);
-                await _taskRepository.UpdateAsync(request.Id, currentTask);
-                return true;
+                if(currentTask != null)
+                {
+                    _mapper.Map(request, currentTask);
+                    await _taskRepository.UpdateAsync(request.Id, currentTask);
+                    return true;
+                }
             }
             return false;
         }
@@ -72,6 +76,18 @@ namespace LembreMeServer.Domain.Handlers
         {
             IEnumerable<TaskDomain> tasks = await _taskRepository.GetAllAsync();
             return _mapper.Map<IEnumerable<GetTaskResponse>>(tasks);
+        }
+
+        public async Task<bool> Handle(PatchCompletedTaskRequest request, CancellationToken cancellationToken)
+        {
+            TaskDomain task = await _taskRepository.GetAsync(request.Id);
+            if(task != null)
+            {
+                task.Completed = request.Completed;
+                await _taskRepository.UpdateAsync(request.Id, task);
+                return true;
+            }
+            return false;
         }
     }
 }
